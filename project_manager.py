@@ -1,5 +1,5 @@
 import utils as ut
-import datetime
+from datetime import datetime
 import copy
 
 def Agregar_proyecto(proyectos: list):
@@ -25,7 +25,7 @@ def Agregar_proyecto(proyectos: list):
     decripcion = ut.get_validar_string("Descripción (alfanumérico, máx 200): ", 200)
     presupuesto = ut.get_validar_int("Presupuesto (mínimo $500000): ", 500000)
     fechaInicio = ut.get_validar_date("Fecha de Inicio (DD/MM/AAAA): ")
-    fechaFin = ut.get_validar_date("Fecha de Fin (DD/MM/AAAA): ", fechaInicio)
+    fechaFin = ut.get_validar_date("Fecha de Fin (DD/MM/AAAA): ",min_date = datetime.now().date())
     
     proyecto = {
         "id": proyecto_id,

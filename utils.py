@@ -1,5 +1,5 @@
 import datetime
-
+from datetime import datetime, date, time
 def get_validar_string(prompt, largo_maximo, alpha_only=False):
     """
     La función `get_validar_string` solicita la entrada del usuario, valida la longitud y el contenido
@@ -79,10 +79,10 @@ def get_validar_date(prompt, min_date=None):
     while True:
         date_str = input(prompt)
         try:
-            date_obj = datetime.datetime.strptime(date_str, "%d/%m/%Y")
+            date_obj = datetime.strptime(date_str, "%d/%m/%Y")
             
-            if min_date and isinstance(min_date, datetime.date):
-                min_date = datetime.datetime.combine(min_date, datetime.time.min)
+            if min_date and isinstance(min_date, date):
+                min_date = datetime.combine(min_date,time.min)
             
             if min_date and date_obj < min_date:
                 print(f"La fecha debe ser posterior a {min_date.strftime('%d/%m/%Y')}.")
