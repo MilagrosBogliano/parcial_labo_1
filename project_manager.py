@@ -1,7 +1,21 @@
 import utils as ut
 import datetime
 import copy
+
 def Agregar_proyecto(proyectos: list):
+    """
+    La función `Agregar_proyecto` agrega un nuevo proyecto a una lista de proyectos con validaciones de
+    entrada específicas y limita la cantidad de proyectos que se pueden agregar.
+    
+    :param proyectos: The function `Agregar_proyecto` takes a list `proyectos` as a parameter. This list
+    contains dictionaries, where each dictionary represents a project with keys like "id", "Nombre del
+    Proyecto", "Descripción", "Presupuesto", "Fecha de inicio", "Fecha de Fin",
+    :type proyectos: list
+    :return: La función `Agregar_proyecto` no devuelve explícitamente ningún valor. Si se cumple la
+    condición `len(proyectos) >= 50`, la función imprime un mensaje y luego regresa. Si no se cumple la
+    condición, la función agrega un nuevo proyecto a la lista de `proyectos` e imprime un mensaje de
+    éxito, pero no devuelve ningún valor específico.
+    """
     if len(proyectos) >= 50:
         print("No se pueden agregar más proyectos. Límite alcanzado.")
         return
@@ -28,6 +42,19 @@ def Agregar_proyecto(proyectos: list):
     
     
 def modificar_proyecto(proyectos: dict):
+    """
+    La función `modificar_proyecto` permite al usuario modificar detalles específicos de un proyecto
+    almacenado en un diccionario basado en la entrada del usuario.
+    
+    :param proyectos: La función `modificar_proyecto` toma como entrada un diccionario `proyectos`, que
+    presumiblemente contiene información sobre diferentes proyectos. La función permite al usuario
+    seleccionar un proyecto por ID y luego elegir qué aspecto del proyecto desea modificar (como nombre,
+    descripción, presupuesto, fecha de inicio)
+    :type proyectos: dict
+    :return: La función `modificar_proyecto` no devuelve explícitamente ningún valor. Modifica los
+    detalles del proyecto según la entrada del usuario e imprime un mensaje de éxito si el proyecto se
+    modifica correctamente.
+    """
     proyecto_id = ut.get_validar_int("Ingrese el ID del proyecto a modificar: ", 1)
     proyecto = next((p for p in proyectos if p["id"] == proyecto_id), None)
     
@@ -67,6 +94,19 @@ def modificar_proyecto(proyectos: dict):
     print(f"Proyecto ID {proyecto_id} modificado exitosamente.")
 
 def cancelar_proyecto(proyectos: list):
+    """
+    La función `cancelar_proyecto` toma una lista de proyectos y cancela un proyecto según la ID
+    proporcionada.
+    
+    :param proyectos: La función `cancelar_proyecto` toma como entrada una lista de proyectos
+    (“proyectos”). Solicita al usuario que ingrese la ID del proyecto que desea cancelar. Luego recorre
+    la lista de proyectos y elimina el proyecto con el ID coincidente, si lo encuentra. Si un proyecto
+    es
+    :type proyectos: list
+    :return: La función `cancelar_proyecto` devuelve un valor booleano: `True` si el proyecto con el ID
+    especificado se canceló y eliminó exitosamente de la lista de proyectos, y `False` si no se encontró
+    ningún proyecto con ese ID en la lista.
+    """
     id_a_eliminar = ut.get_validar_int("Ingrese el ID del proyecto a cancelar: ", 1)
     for proyecto in proyectos:
         if proyecto["id"] == id_a_eliminar:
@@ -74,9 +114,6 @@ def cancelar_proyecto(proyectos: list):
             print(f"Proyecto ID {id_a_eliminar} eliminado exitosamente.")
             return True 
 
-    
-        
-    
     print(f"No se encontró ningún proyecto con ID {id_a_eliminar}.")
     return False  
 
@@ -85,6 +122,16 @@ def cancelar_proyecto(proyectos: list):
 
 
 def chequear_proyectos(proyectos: list):
+    """
+    La función `chequear_proyectos` comprueba si los proyectos han pasado su fecha de finalización y
+    actualiza su estado en consecuencia.
+    
+    :param proyectos: Parece que estabas a punto de proporcionar algunos datos de muestra para el
+    parámetro `proyectos` en la función `chequear_proyectos`. ¿Podría darnos un ejemplo de cómo debería
+    estructurarse la lista de "proyectos"? Esto ayudará a probar la función y garantizar que funcione
+    correctamente con
+    :type proyectos: list
+    """
     presente = datetime.datetime.now().date()
     
     for proyecto in proyectos:
@@ -107,6 +154,15 @@ def chequear_proyectos(proyectos: list):
             print(f"Error al convertir la fecha en el proyecto {proyecto}: {e}")
             
 def mostrar_proyectos(proyectos: list):
+    """
+    La función `mostrar_proyectos` toma una lista de proyectos como entrada e imprime una tabla
+    formateada que muestra los detalles del proyecto.
+    
+    :param proyectos: The function `mostrar_proyectos` takes a list of dictionaries as input, where each
+    dictionary represents a project with keys such as 'id', 'Nombre del Proyecto', 'Descripción',
+    'Presupuesto', 'Fecha de inicio', 'Fecha de Fin', and 'Estado'. The function
+    :type proyectos: list
+    """
     print("-" * 174)
     print("| id |Nombre del Proyecto | Descripción | Presupuesto | Fecha de Inicio | Fecha de Fin | Estado |")
     for proyectos in proyectos:
@@ -114,6 +170,14 @@ def mostrar_proyectos(proyectos: list):
         print(f"| {proyectos['id']}| {proyectos['Nombre del Proyecto']}| {proyectos['Descripción']} | ${proyectos['Presupuesto']} | {proyectos['Fecha de inicio']} | {proyectos['Fecha de Fin']} | {proyectos['Estado']} |")
 
 def calcular_presupuesto_promedio(proyectos: list):
+    """
+    La función calcula el presupuesto medio de una lista de proyectos.
+    
+    :param proyectos: La función `calcular_presupuesto_promedio` calcula el presupuesto medio de una
+    lista de proyectos. La función toma como entrada una lista de proyectos, donde cada proyecto se
+    representa como un diccionario con una clave 'Presupuesto' que indica el presupuesto del proyecto
+    :type proyectos: list
+    """
     total_presupuesto = 0
     for proyecto in proyectos:
         total_presupuesto += float(proyecto['Presupuesto'])
@@ -125,6 +189,16 @@ def calcular_presupuesto_promedio(proyectos: list):
 
 
 def buscar_proyecto_nombre(proyectos: list):
+    """
+    La función `buscar_proyecto_nombre` toma una lista de proyectos, solicita al usuario que ingrese el
+    nombre del proyecto para buscar y luego imprime los detalles del proyecto si lo encuentra.
+    
+    :param proyectos: La función `buscar_proyecto_nombre` toma una lista de proyectos como entrada y
+    solicita al usuario que ingrese el nombre del proyecto que desea buscar. Luego recorre la lista de
+    proyectos para encontrar un proyecto con un nombre que coincida con la entrada. Si se encuentra un
+    proyecto,
+    :type proyectos: list
+    """
     nombre = input("Ingrese el nombre del proyecto a buscar: ").lower()
     
     proyecto_encontrado = None
@@ -140,6 +214,16 @@ def buscar_proyecto_nombre(proyectos: list):
         print("Proyecto no encontrado.")
         
 def ordenar_proyectos(proyectos: list):
+    """
+    La función `ordenar_proyectos` ordena una lista de proyectos según criterios seleccionados por el
+    usuario, como nombre, presupuesto o fecha de inicio.
+    
+    :param proyectos: Parece que el código que proporcionaste es una función que ordena una lista de
+    proyectos según diferentes criterios, como nombre, presupuesto y fecha de inicio. Parece que a la
+    función le falta la definición de la función `mostrar_proyectos` y la importación del módulo
+    `datetime`
+    :type proyectos: list
+    """
     proyectos_original = copy.deepcopy(proyectos)
     while True:
         print("\n¿Ordenar por?")
@@ -169,6 +253,18 @@ def ordenar_proyectos(proyectos: list):
         proyectos.extend(proyectos_original)   
             
 def retomar_proyecto(proyectos):
+    """
+    Esta función de Python permite a un usuario reanudar un proyecto cambiando su estado de "Cancelado"
+    a "Activo" según el ID del proyecto proporcionado.
+    
+    :param proyectos: La función `retomar_proyecto` toma una lista de proyectos (“proyectos”) como
+    entrada. Solicita al usuario que ingrese el ID del proyecto que desea reanudar. Si en la lista se
+    encuentra un proyecto con el ID especificado y el estado "Cancelado"
+    :return: Si el proyecto con el ID especificado se encuentra en la lista de proyectos y su estado es
+    "Cancelado", entonces la función devolverá un mensaje indicando que el proyecto se ha reanudado
+    exitosamente. Si el proyecto no se encuentra o no está en estado "Cancelado", se imprimirá un
+    mensaje indicando que el proyecto no se encontró o no está cancelado.
+    """
     proyecto_id = ut.get_validar_int("Ingrese el ID del proyecto a retomar: ", 1)
 
     for proyecto in proyectos:

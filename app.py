@@ -1,6 +1,14 @@
 import project_manager as pm
 import archivos as fh
 def Menu(proyectos):
+    """
+    La función `Menú` muestra un menú para gestionar proyectos y permite al usuario realizar varias
+    acciones en una lista de proyectos.
+    
+    :param proyectos: Parece que el fragmento de código que proporcionaste es un sistema de menú para
+    gestionar proyectos. La función `Menú` muestra un menú con varias opciones para gestionar proyectos
+    y llama a diferentes funciones según la elección del usuario
+    """
     while True:
         print("-" * 34)
         print("|Menú de Gestión de Proyectos:   |")
