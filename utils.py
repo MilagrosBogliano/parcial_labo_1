@@ -1,4 +1,3 @@
-import re
 import datetime
 
 def get_validar_string(prompt, largo_maximo, alpha_only=False):
