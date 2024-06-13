@@ -41,7 +41,7 @@ def Agregar_proyecto(proyectos: list):
     print(f"Proyecto '{nombre}' agregado exitosamente.")
     
     
-def modificar_proyecto(proyectos: dict):
+def modificar_proyecto(proyectos: list):
     """
     La función `modificar_proyecto` permite al usuario modificar detalles específicos de un proyecto
     almacenado en un diccionario basado en la entrada del usuario.
