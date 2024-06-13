@@ -163,10 +163,10 @@ def mostrar_proyectos(proyectos: list):
     'Presupuesto', 'Fecha de inicio', 'Fecha de Fin', and 'Estado'. The function
     :type proyectos: list
     """
-    print("-" * 174)
+    print("-" * 170)
     print("| id |Nombre del Proyecto | Descripción | Presupuesto | Fecha de Inicio | Fecha de Fin | Estado |")
     for proyectos in proyectos:
-        print("-" * 174)
+        print("-" * 170)
         print(f"| {proyectos['id']}| {proyectos['Nombre del Proyecto']}| {proyectos['Descripción']} | ${proyectos['Presupuesto']} | {proyectos['Fecha de inicio']} | {proyectos['Fecha de Fin']} | {proyectos['Estado']} |")
 
 def calcular_presupuesto_promedio(proyectos: list):
